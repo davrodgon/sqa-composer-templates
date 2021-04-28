@@ -1,0 +1,15 @@
+# Docker Compose template
+#
+version: "3.8"
+
+services:
+
+  QC.Acc: 
+    build: ./QC.Acc
+    image: qc-acc
+
+  QC.Lic: 
+    build: ./QC.Lic
+    image: qc-lic
+
+
