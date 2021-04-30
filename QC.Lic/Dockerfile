@@ -1,14 +1,10 @@
-FROM indigodatacloud/ci-images:python
+FROM python:3-slim
 
 LABEL maintainer="davrodgon@users.noreply.github.com"
 
-RUN pip install PyGithub
+RUN pip3 install PyGithub
 
-COPY *.py /usr/local/bin/
-RUN chmod +x /usr/local/bin/*.py  
+COPY checkLicense.py /usr/local/bin/
+RUN chmod +x /usr/local/bin/checkLicense.py  
 
-# Standard SSH port
-EXPOSE 22
-
-# Default command
-CMD ["/usr/sbin/sshd", "-D"]
+ENTRYPOINT [ "/usr/local/bin/checkLicense.py" ]
